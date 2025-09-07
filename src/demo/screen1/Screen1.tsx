@@ -10,11 +10,16 @@ const Screen1 = () => {
         <>
             <div>
                 <h2>학생 점수 카드 (테이블 형식)</h2>
-                <TableGrid data={students} columns={columns} />
+                <TableGrid data={students} columns={tableGridColumns} />
             </div>
             <div>
                 <h2>학생 점수 카드 선형 그래프</h2>
-                <LineChart students={students} />
+                <LineChart
+                    data={students}
+                    labels={(s) => s.name}
+                    title="점수 변화 추이 (선형)"
+                    datasets={lineChartDataSets}
+                />
             </div>
             <div>
                 <h2>학생 점수 카드</h2>
@@ -40,7 +45,8 @@ const calcAvg = (s: Student) => {
     return Math.round((s.kor + s.eng + s.math) / 3);
 };
 
-const columns: Column<Student>[] = [
+// tableGrid
+const tableGridColumns: Column<Student>[] = [
     { key: 'name', header: '이름' },
     { key: 'kor', header: '국어' },
     { key: 'eng', header: '영어' },
@@ -48,6 +54,28 @@ const columns: Column<Student>[] = [
     {
         header: '평균',
         render: (s) => calcAvg(s),
+    },
+];
+
+// lineChart
+const lineChartDataSets = [
+    {
+        label: '국어',
+        data: (s: Student) => s.kor,
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.1)',
+    },
+    {
+        label: '영어',
+        data: (s: Student) => s.eng,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.1)',
+    },
+    {
+        label: '수학',
+        data: (s: Student) => s.math,
+        borderColor: 'rgba(255, 159, 64, 1)',
+        backgroundColor: 'rgba(255, 159, 64, 0.1)',
     },
 ];
 
