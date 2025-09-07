@@ -1,9 +1,15 @@
-import BarChart, { type BarChartDataset } from './BarChart';
-import CardList, { type CardField } from './CardList';
-import LineChart from './LineChart';
-import TableGrid, { type Column } from './TableGrid';
+import {
+    BarChart,
+    CardList,
+    LineChart,
+    TableGrid,
+    type BarChartDataset,
+    type CardField,
+    type GridColumn,
+    type LineChartDataset,
+} from 'nsc-practice';
 
-export type Student = { name: string; kor: number; eng: number; math: number };
+type Student = { name: string; kor: number; eng: number; math: number };
 
 const Screen1 = () => {
     return (
@@ -51,7 +57,7 @@ const calcAvg = (s: Student) => {
 };
 
 // tableGrid
-const tableGridColumns: Column<Student>[] = [
+const tableGridColumns: GridColumn<Student>[] = [
     { key: 'name', header: '이름' },
     { key: 'kor', header: '국어' },
     { key: 'eng', header: '영어' },
@@ -63,7 +69,7 @@ const tableGridColumns: Column<Student>[] = [
 ];
 
 // lineChart
-const lineChartDataSets = [
+const lineChartDataSets: LineChartDataset<Student>[] = [
     {
         label: '국어',
         data: (s: Student) => s.kor,
