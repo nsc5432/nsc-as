@@ -6,29 +6,6 @@ import TableGrid, { type Column } from './TableGrid';
 export type Student = { name: string; kor: number; eng: number; math: number };
 
 const Screen1 = () => {
-    const students = [
-        { name: '홍길동', kor: 90, eng: 85, math: 95 },
-        { name: '김철수', kor: 80, eng: 70, math: 80 },
-        { name: '배진주', kor: 70, eng: 80, math: 97 },
-        { name: '박상원', kor: 85, eng: 90, math: 88 },
-        { name: '이영희', kor: 75, eng: 95, math: 91 },
-    ];
-
-    const calcAvg = (s: Student) => {
-        return Math.round((s.kor + s.eng + s.math) / 3);
-    };
-
-    const columns: Column<Student>[] = [
-        { key: 'name', header: '이름' },
-        { key: 'kor', header: '국어' },
-        { key: 'eng', header: '영어' },
-        { key: 'math', header: '수학' },
-        {
-            header: '평균',
-            render: (s) => calcAvg(s),
-        },
-    ];
-
     return (
         <>
             <div>
@@ -50,5 +27,28 @@ const Screen1 = () => {
         </>
     );
 };
+
+const students = [
+    { name: '홍길동', kor: 90, eng: 85, math: 95 },
+    { name: '김철수', kor: 80, eng: 70, math: 80 },
+    { name: '배진주', kor: 70, eng: 80, math: 97 },
+    { name: '박상원', kor: 85, eng: 90, math: 88 },
+    { name: '이영희', kor: 75, eng: 95, math: 91 },
+];
+
+const calcAvg = (s: Student) => {
+    return Math.round((s.kor + s.eng + s.math) / 3);
+};
+
+const columns: Column<Student>[] = [
+    { key: 'name', header: '이름' },
+    { key: 'kor', header: '국어' },
+    { key: 'eng', header: '영어' },
+    { key: 'math', header: '수학' },
+    {
+        header: '평균',
+        render: (s) => calcAvg(s),
+    },
+];
 
 export default Screen1;
