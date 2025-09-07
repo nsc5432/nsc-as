@@ -1,4 +1,4 @@
-import BarChart from './BarChart';
+import BarChart, { type BarChartDataset } from './BarChart';
 import CardList, { type CardField } from './CardList';
 import LineChart from './LineChart';
 import TableGrid, { type Column } from './TableGrid';
@@ -23,11 +23,16 @@ const Screen1 = () => {
             </div>
             <div>
                 <h2>학생 점수 카드</h2>
-                <CardList data={students} titleKey={(s) => s.name} fields={studentFields} />
+                <CardList data={students} titleKey={(s) => s.name} fields={cardFields} />
             </div>
             <div>
                 <h2>점수 변화 추이 (재차트) 막대형 그래프</h2>
-                <BarChart students={students} calcAvg={calcAvg} />
+                <BarChart
+                    data={students}
+                    labels={(s) => s.name}
+                    datasets={barChartDatasets}
+                    title="과목별 점수 비교 (막대형)"
+                />
             </div>
         </>
     );
@@ -80,11 +85,19 @@ const lineChartDataSets = [
 ];
 
 // cardList
-const studentFields: CardField<Student>[] = [
+const cardFields: CardField<Student>[] = [
     { label: '국어', value: (s) => s.kor },
     { label: '영어', value: (s) => s.eng },
     { label: '수학', value: (s) => s.math },
     { label: '평균', value: (s) => <strong>{calcAvg(s)}</strong> },
+];
+
+// barChart
+const barChartDatasets: BarChartDataset<Student>[] = [
+    { label: '국어', data: (s) => s.kor, backgroundColor: 'rgba(54, 162, 235, 0.7)' },
+    { label: '영어', data: (s) => s.eng, backgroundColor: 'rgba(255, 99, 132, 0.7)' },
+    { label: '수학', data: (s) => s.math, backgroundColor: 'rgba(255, 206, 86, 0.7)' },
+    { label: '평균', data: (s) => calcAvg(s), backgroundColor: 'rgba(153, 102, 255, 0.7)' },
 ];
 
 export default Screen1;
