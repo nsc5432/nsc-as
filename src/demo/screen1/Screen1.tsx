@@ -1,7 +1,7 @@
 import BarChart from './BarChart';
 import Cards from './Cards';
 import LineChart from './LineChart';
-import TableGrid from './TableGrid';
+import TableGrid, { type Column } from './TableGrid';
 
 export type Student = { name: string; kor: number; eng: number; math: number };
 
@@ -18,11 +18,22 @@ const Screen1 = () => {
         return Math.round((s.kor + s.eng + s.math) / 3);
     };
 
+    const columns: Column<Student>[] = [
+        { key: 'name', header: '이름' },
+        { key: 'kor', header: '국어' },
+        { key: 'eng', header: '영어' },
+        { key: 'math', header: '수학' },
+        {
+            header: '평균',
+            render: (s) => calcAvg(s),
+        },
+    ];
+
     return (
         <>
             <div>
                 <h2>학생 점수 카드 (테이블 형식)</h2>
-                <TableGrid students={students} calcAvg={calcAvg} />
+                <TableGrid data={students} columns={columns} />
             </div>
             <div>
                 <h2>학생 점수 카드 선형 그래프</h2>

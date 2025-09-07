@@ -1,30 +1,38 @@
-import type { Student } from './Screen1';
+import React from 'react';
 
-interface TableGridProps {
-    students: Student[];
-    calcAvg: (s: Student) => number;
+export interface Column<T> {
+    key?: keyof T;
+    header: string;
+    render?: (row: T) => React.ReactNode; // 필요시 커스텀 렌더링
 }
 
-const TableGrid = ({ students, calcAvg }: TableGridProps) => {
+interface TableGridProps<T> {
+    data: T[];
+    columns: Column<T>[];
+}
+
+const TableGrid = <T,>({ data, columns }: TableGridProps<T>) => {
     return (
         <table>
             <thead>
                 <tr>
-                    <th>이름</th>
-                    <th>국어</th>
-                    <th>영어</th>
-                    <th>수학</th>
-                    <th>평균</th>
+                    {columns.map((col) => (
+                        <th key={String(col.key)}>{col.header}</th>
+                    ))}
                 </tr>
             </thead>
             <tbody>
-                {students.map((s) => (
-                    <tr>
-                        <td>{s.name}</td>
-                        <td>{s.kor}</td>
-                        <td>{s.eng}</td>
-                        <td>{s.math}</td>
-                        <td>{calcAvg(s)}</td>
+                {data.map((row, rowIdx) => (
+                    <tr key={rowIdx}>
+                        {columns.map((col) => (
+                            <td key={String(col.key)}>
+                                {col.render
+                                    ? col.render(row)
+                                    : col.key
+                                      ? (row[col.key] as React.ReactNode)
+                                      : null}
+                            </td>
+                        ))}
                     </tr>
                 ))}
             </tbody>
