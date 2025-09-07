@@ -1,5 +1,5 @@
 import BarChart from './BarChart';
-import Cards from './Cards';
+import CardList, { type CardField } from './CardList';
 import LineChart from './LineChart';
 import TableGrid, { type Column } from './TableGrid';
 
@@ -23,7 +23,7 @@ const Screen1 = () => {
             </div>
             <div>
                 <h2>학생 점수 카드</h2>
-                <Cards students={students} calcAvg={calcAvg} />
+                <CardList data={students} titleKey={(s) => s.name} fields={studentFields} />
             </div>
             <div>
                 <h2>점수 변화 추이 (재차트) 막대형 그래프</h2>
@@ -77,6 +77,14 @@ const lineChartDataSets = [
         borderColor: 'rgba(255, 159, 64, 1)',
         backgroundColor: 'rgba(255, 159, 64, 0.1)',
     },
+];
+
+// cardList
+const studentFields: CardField<Student>[] = [
+    { label: '국어', value: (s) => s.kor },
+    { label: '영어', value: (s) => s.eng },
+    { label: '수학', value: (s) => s.math },
+    { label: '평균', value: (s) => <strong>{calcAvg(s)}</strong> },
 ];
 
 export default Screen1;
