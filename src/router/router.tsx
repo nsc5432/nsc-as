@@ -2,40 +2,42 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import RootLayout from '../layout/RootLayout';
+import Loading from '../common/Loading';
 
+const Screen0 = lazy(() => import('../demo/screen0/Screen0'));
 const Screen1 = lazy(() => import('../demo/screen1/Screen1'));
-const CacheSample = lazy(() => import('../sample/CacheSample'));
+const Screen2 = lazy(() => import('../demo/screen2/Screen2'));
+const Screen3 = lazy(() => import('../demo/screen3/Screen3'));
+const Screen4 = lazy(() => import('../demo/screen4/Screen4'));
+const Screen5 = lazy(() => import('../demo/screen5/CacheSample'));
 
-export const router = createBrowserRouter(
+const screens = [Screen0, Screen1, Screen2, Screen3, Screen4, Screen5];
+
+const router = createBrowserRouter(
     [
         {
             element: <RootLayout />,
             children: [
                 {
                     index: true,
-                    element: <div>홈 입니다</div>,
-                },
-                {
-                    path: 'screen1',
                     element: (
-                        <Suspense fallback={<div>Loading</div>}>
-                            <Screen1 />
+                        <Suspense fallback={<Loading />}>
+                            <Screen0 />
                         </Suspense>
                     ),
                 },
-                {
-                    path: 'cache-sample',
+                ...screens.map((Comp, i) => ({
+                    path: 'screen' + i,
                     element: (
-                        <Suspense fallback={<div>Loading</div>}>
-                            <CacheSample />
+                        <Suspense fallback={<Loading />}>
+                            <Comp />
                         </Suspense>
                     ),
-                },
+                })),
             ],
         },
     ],
     {
-        // 서브 경로 배포 시 자동 처리 (vite base와 연동)
         basename: import.meta.env.BASE_URL,
     }
 );

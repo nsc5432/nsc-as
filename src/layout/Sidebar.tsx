@@ -22,48 +22,39 @@ const Sidebar = () => {
                                 </button>
                                 <ul className="sidebar-smmenu">
                                     <li className="sidebar-item active">
-                                        <a
-                                            href="${pageContext.request.contextPath}/airline/static0"
-                                            className="btn"
-                                        >
+                                        <a href="/screen0" className="btn">
                                             {' '}
                                             AS 항공 통계 포털0{' '}
                                         </a>
                                     </li>
-                                    <li className="sidebar-item active">
-                                        <a
-                                            href="${pageContext.request.contextPath}/airline/static"
-                                            className="btn"
-                                        >
+                                    <li className="sidebar-item">
+                                        <a href="/screen1" className="btn">
                                             {' '}
                                             AS 항공 통계 포털1{' '}
                                         </a>
                                     </li>
-                                    <li className="sidebar-item active">
-                                        <a
-                                            href="${pageContext.request.contextPath}/airline/static2"
-                                            className="btn"
-                                        >
+                                    <li className="sidebar-item">
+                                        <a href="/screen2" className="btn">
                                             {' '}
                                             AS 항공 통계 포털2{' '}
                                         </a>
                                     </li>
-                                    <li className="sidebar-item active">
-                                        <a
-                                            href="${pageContext.request.contextPath}/airline/static3"
-                                            className="btn"
-                                        >
+                                    <li className="sidebar-item">
+                                        <a href="/screen3" className="btn">
                                             {' '}
                                             AS 항공 통계 포털3{' '}
                                         </a>
                                     </li>
-                                    <li className="sidebar-item active">
-                                        <a
-                                            href="${pageContext.request.contextPath}/agGrid/agGrid1"
-                                            className="btn"
-                                        >
+                                    <li className="sidebar-item">
+                                        <a href="/screen4" className="btn">
                                             {' '}
                                             AS 항공 통계 포털4{' '}
+                                        </a>
+                                    </li>
+                                    <li className="sidebar-item">
+                                        <a href="/screen5" className="btn">
+                                            {' '}
+                                            Cache Sample{' '}
                                         </a>
                                     </li>
                                 </ul>
