@@ -6,42 +6,6 @@
     background-color: #7b81bf;
     box-shadow: -20px 0px 0px 0px rgba(0, 0, 0, 0.1019607843);
 }
-.portal-container {
-    flex-grow: 1;
-    display: flex;
-    background-color: #f7f7f7;
-}
-.portal-sidebar {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-    background-color: #fff;
-    box-shadow: 1px 0px 0px 0px #ddd;
-}
-.portal-dragable {
-    position: relative;
-    flex-shrink: 0;
-    width: 10px;
-}
-.portal-dragable .dragable-btn {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: url(../assets/icon/icon_fold.svg) no-repeat center center;
-    cursor: w-resize;
-}
-.portal-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 0 var(--pd-side) var(--pd-side);
-    background-color: #fff;
-    box-shadow: -1px 0px 0px 0px #ddd;
-}
-
 .header-logo {
     width: 250px;
     display: flex;
