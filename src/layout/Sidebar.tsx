@@ -1,11 +1,47 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+type TabType = 'CATEGORY' | 'MY_REPORT';
+type MenuType = string | undefined;
+type SidebarType = TabType | MenuType;
+
 const Sidebar = () => {
+    const navigate = useNavigate();
+    const [tabBtn, setTabBtn] = useState<TabType>('CATEGORY');
+    const [menuBtn, setMenuBtn] = useState<MenuType>();
+
+    const onClickTabBtn = setTabBtn;
+    const onClickMenuBtn = setMenuBtn;
+
+    const isActive = (subject: SidebarType) => (target: SidebarType) =>
+        subject === target ? 'active' : '';
+    const isActiveTab = isActive(tabBtn);
+    const isActiveMenu = isActive(menuBtn);
+
+    useEffect(() => {
+        if (!menuBtn) {
+            // TODO: 가장 상단의 메뉴 선택
+            setMenuBtn('screen0');
+            return;
+        }
+
+        navigate(menuBtn);
+    }, [menuBtn]);
+
     return (
         <div className="portal-sidebar">
             <div className="sidebar-tab">
-                <button type="button" className="sidebar-tab-btn active">
+                <button
+                    // className={`sidebar-tab-btn ${isActiveTab('CATEGORY')}`}
+                    className={`sidebar-tab-btn ${isActive(tabBtn)('CATEGORY')}`}
+                    onClick={() => onClickTabBtn('CATEGORY')}
+                >
                     Category
                 </button>
-                <button type="button" className="sidebar-tab-btn">
+                <button
+                    className={`sidebar-tab-btn ${isActiveTab('MY_REPORT')}`}
+                    onClick={() => onClickTabBtn('MY_REPORT')}
+                >
                     My Report
                 </button>
             </div>
@@ -21,41 +57,53 @@ const Sidebar = () => {
                                     통계
                                 </button>
                                 <ul className="sidebar-smmenu">
-                                    <li className="sidebar-item active">
-                                        <a href="/screen0" className="btn">
-                                            {' '}
-                                            AS 항공 통계 포털0{' '}
-                                        </a>
+                                    <li className={`sidebar-item ${isActiveMenu('screen0')}`}>
+                                        <button
+                                            className="btn"
+                                            onClick={() => onClickMenuBtn('screen0')}
+                                        >
+                                            AS 항공 통계 포털0
+                                        </button>
                                     </li>
-                                    <li className="sidebar-item">
-                                        <a href="/screen1" className="btn">
-                                            {' '}
-                                            AS 항공 통계 포털1{' '}
-                                        </a>
+                                    <li className={`sidebar-item ${isActiveMenu('screen1')}`}>
+                                        <button
+                                            className="btn"
+                                            onClick={() => onClickMenuBtn('screen1')}
+                                        >
+                                            AS 항공 통계 포털1
+                                        </button>
                                     </li>
-                                    <li className="sidebar-item">
-                                        <a href="/screen2" className="btn">
-                                            {' '}
-                                            AS 항공 통계 포털2{' '}
-                                        </a>
+                                    <li className={`sidebar-item ${isActiveMenu('screen2')}`}>
+                                        <button
+                                            className="btn"
+                                            onClick={() => onClickMenuBtn('screen2')}
+                                        >
+                                            AS 항공 통계 포털2
+                                        </button>
                                     </li>
-                                    <li className="sidebar-item">
-                                        <a href="/screen3" className="btn">
-                                            {' '}
-                                            AS 항공 통계 포털3{' '}
-                                        </a>
+                                    <li className={`sidebar-item ${isActiveMenu('screen3')}`}>
+                                        <button
+                                            className="btn"
+                                            onClick={() => onClickMenuBtn('screen3')}
+                                        >
+                                            AS 항공 통계 포털3
+                                        </button>
                                     </li>
-                                    <li className="sidebar-item">
-                                        <a href="/screen4" className="btn">
-                                            {' '}
-                                            AS 항공 통계 포털4{' '}
-                                        </a>
+                                    <li className={`sidebar-item ${isActiveMenu('screen4')}`}>
+                                        <button
+                                            className="btn"
+                                            onClick={() => onClickMenuBtn('screen4')}
+                                        >
+                                            AS 항공 통계 포털4
+                                        </button>
                                     </li>
-                                    <li className="sidebar-item">
-                                        <a href="/screen5" className="btn">
-                                            {' '}
+                                    <li className={`sidebar-item ${isActiveMenu('screen5')}`}>
+                                        <button
+                                            className="btn"
+                                            onClick={() => onClickMenuBtn('screen5')}
+                                        >
                                             Cache Sample{' '}
-                                        </a>
+                                        </button>
                                     </li>
                                 </ul>
                             </li>
