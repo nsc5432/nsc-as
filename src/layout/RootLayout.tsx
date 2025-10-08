@@ -1,15 +1,18 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
+import Header from './Header';
+
+import '../css/index.css';
+import '../css/fonts/pretendard/pretendardvariable.css';
+import '../css/fonts/gmarket/gmarket.css';
+import '../css/layout/RootLayout.css';
+import '../css/layout/Header.css';
 
 export default function RootLayout() {
     return (
-        <>
-            <nav style={{ display: 'flex', gap: 12, padding: 8 }}>
-                <Link to="/">Home</Link>
-                <Link to="/screen1">Screen1</Link>
-                <Link to="/cache-sample">CacheSample</Link>
-            </nav>
-
+        <div className="root">
+            <Header />
             <Outlet />
-        </>
+        </div>
     );
 }

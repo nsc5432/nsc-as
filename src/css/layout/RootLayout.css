@@ -1,0 +1,12 @@
+#root {
+    width: 100%;
+}
+
+.root {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    color: #333;
+}

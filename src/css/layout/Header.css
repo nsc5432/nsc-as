@@ -1,0 +1,183 @@
+.portal-header {
+    display: flex;
+    gap: 10px;
+    height: 50px;
+    padding-right: var(--pd-side);
+    background-color: #7b81bf;
+    box-shadow: -20px 0px 0px 0px rgba(0, 0, 0, 0.1019607843);
+}
+.portal-container {
+    flex-grow: 1;
+    display: flex;
+    background-color: #f7f7f7;
+}
+.portal-sidebar {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 1px 0px 0px 0px #ddd;
+}
+.portal-dragable {
+    position: relative;
+    flex-shrink: 0;
+    width: 10px;
+}
+.portal-dragable .dragable-btn {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: url(../assets/icon/icon_fold.svg) no-repeat center center;
+    cursor: w-resize;
+}
+.portal-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--pd-side) var(--pd-side);
+    background-color: #fff;
+    box-shadow: -1px 0px 0px 0px #ddd;
+}
+
+.header-logo {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.header-nav {
+    flex-grow: 1;
+    display: flex;
+}
+
+.header-menu {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    gap: 6px;
+}
+.header-menu .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 43px;
+    border: 1px solid rgba(255, 255, 255, 0.3019607843);
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    color: #fff;
+    font-family: 'GmarketSans';
+    font-size: 16px;
+    font-weight: 500;
+}
+.header-menu .header-item.active .btn {
+    background-color: #fff;
+    color: #7b81bf;
+}
+
+.header-global {
+    display: flex;
+    margin-left: auto;
+    gap: 10px;
+    padding: 8px 0;
+    font-family: 'GmarketSans';
+    font-weight: 500;
+    font-size: 13px;
+    color: #fff;
+    margin-right: -15px;
+}
+.header-global .btn-icon {
+    width: 34px;
+    height: 34px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #f5f7fa;
+    overflow: hidden;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 20px;
+    margin: 10px 0;
+}
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+.tab-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    font-size: 13px;
+    margin: 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.tab-button.active {
+    background: #2c3e50;
+}
+.tab-content {
+    display: none;
+    width: 100%;
+    max-width: 1000px;
+}
+.tab-content.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+th,
+td {
+    padding: 10px; /* 넉넉한 간격 */
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 14px; /* 더 큰 글자 */
+    font-weight: 500; /* 살짝 두껍게 */
+    color: #2c3e50; /* 어두운 회색 */
+}
+th {
+    background-color: #3498db;
+    color: white;
+}
+.chart-box {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+canvas {
+    max-height: 240px;
+}
