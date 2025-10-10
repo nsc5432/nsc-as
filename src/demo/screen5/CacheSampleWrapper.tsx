@@ -21,11 +21,11 @@ const CacheSampleWrapper = () => {
     }, []);
 
     return (
-        <>
+        <div>
             <UsersSample />
             <hr />
             <TodosSample />
-        </>
+        </div>
     );
 };
 
