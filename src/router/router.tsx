@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import RootLayout from '../layout/RootLayout';
-import Loading from '../common/Loading';
+import Loading from '../common/comp/Loading';
 
 const Screen0 = lazy(() => import('../demo/screen0/Screen0'));
 const Screen1 = lazy(() => import('../demo/screen1/Screen1'));

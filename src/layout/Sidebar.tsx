@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { eq } from '../common/fp-utils';
+
 type TabType = 'CATEGORY' | 'MY_REPORT';
 type MenuType = string | undefined;
 type SidebarType = TabType | MenuType;
@@ -14,7 +16,7 @@ const Sidebar = () => {
     const onClickMenuBtn = setMenuBtn;
 
     const isActive = (subject: SidebarType) => (target: SidebarType) =>
-        subject === target ? 'active' : '';
+        eq(subject)(target) ? 'active' : '';
     const isActiveTab = isActive(tabBtn);
     const isActiveMenu = isActive(menuBtn);
 
@@ -32,8 +34,7 @@ const Sidebar = () => {
         <div className="portal-sidebar">
             <div className="sidebar-tab">
                 <button
-                    // className={`sidebar-tab-btn ${isActiveTab('CATEGORY')}`}
-                    className={`sidebar-tab-btn ${isActive(tabBtn)('CATEGORY')}`}
+                    className={`sidebar-tab-btn ${isActiveTab('CATEGORY')}`}
                     onClick={() => onClickTabBtn('CATEGORY')}
                 >
                     Category
