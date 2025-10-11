@@ -3,32 +3,32 @@ import { useNavigate } from 'react-router-dom';
 
 import { eq } from '../common/fp-utils';
 
-type TabType = 'CATEGORY' | 'MY_REPORT';
-type MenuType = string | undefined;
-type SidebarType = TabType | MenuType;
+type SelectedTab = 'CATEGORY' | 'MY_REPORT';
+type SelectedMenu = string | undefined;
+type SidebarType = SelectedTab | SelectedMenu;
 
 const Sidebar = () => {
     const navigate = useNavigate();
-    const [tabBtn, setTabBtn] = useState<TabType>('CATEGORY');
-    const [menuBtn, setMenuBtn] = useState<MenuType>();
+    const [selectedTab, setSelectedTab] = useState<SelectedTab>('CATEGORY');
+    const [selectedMenu, setSelectedMenu] = useState<SelectedMenu>();
 
-    const onClickTabBtn = setTabBtn;
-    const onClickMenuBtn = setMenuBtn;
+    const onClickTabBtn = setSelectedTab;
+    const onClickMenuBtn = setSelectedMenu;
 
     const isActive = (subject: SidebarType) => (target: SidebarType) =>
         eq(subject)(target) ? 'active' : '';
-    const isActiveTab = isActive(tabBtn);
-    const isActiveMenu = isActive(menuBtn);
+    const isActiveTab = isActive(selectedTab);
+    const isActiveMenu = isActive(selectedMenu);
 
     useEffect(() => {
-        if (!menuBtn) {
+        if (!selectedMenu) {
             // TODO: 가장 상단의 메뉴 선택
-            setMenuBtn('screen0');
+            setSelectedMenu('screen0');
             return;
         }
 
-        navigate(menuBtn);
-    }, [menuBtn]);
+        navigate(selectedMenu);
+    }, [selectedMenu]);
 
     return (
         <div className="portal-sidebar">
