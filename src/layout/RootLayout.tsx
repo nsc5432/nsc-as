@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
-import Header from './Header';
-import Sidebar from './Sidebar';
+import Header from './header/Header';
+import Sidebar from './sidebar/Sidebar';
 
 import '../css/index.css';
 import '../css/fonts/pretendard/pretendardvariable.css';
