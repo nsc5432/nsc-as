@@ -27,7 +27,7 @@
     left: 0;
     right: 0;
     height: 40px;
-    background: url(../assets/icon/icon_fold.svg) no-repeat center center;
+    background: url(../../assets/icon/icon_fold.svg) no-repeat center center;
     cursor: w-resize;
 }
 .portal-content {

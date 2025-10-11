@@ -48,31 +48,38 @@ const Sidebar = () => {
     }, [selectedMenu]);
 
     return (
-        <div className="portal-sidebar">
-            <div className="sidebar-tab">
-                <button
-                    className={`sidebar-tab-btn ${isActiveTab('CATEGORY')}`}
-                    onClick={() => onClickTabBtn('CATEGORY')}
-                >
-                    Category
-                </button>
-                <button
-                    className={`sidebar-tab-btn ${isActiveTab('MY_REPORT')}`}
-                    onClick={() => onClickTabBtn('MY_REPORT')}
-                >
-                    My Report
+        <>
+            <div className="portal-sidebar">
+                <div className="sidebar-tab">
+                    <button
+                        className={`sidebar-tab-btn ${isActiveTab('CATEGORY')}`}
+                        onClick={() => onClickTabBtn('CATEGORY')}
+                    >
+                        Category
+                    </button>
+                    <button
+                        className={`sidebar-tab-btn ${isActiveTab('MY_REPORT')}`}
+                        onClick={() => onClickTabBtn('MY_REPORT')}
+                    >
+                        My Report
+                    </button>
+                </div>
+                <nav className="sidebar-nav">
+                    <ul className="sidebar-menu">
+                        <MenuList
+                            menuList={menuListState}
+                            onClick={onClickMenu}
+                            selectedMenu={selectedMenu}
+                        />
+                    </ul>
+                </nav>
+            </div>
+            <div className="portal-dragable">
+                <button type="button" className="dragable-btn">
+                    <span className="blind">Fold</span>
                 </button>
             </div>
-            <nav className="sidebar-nav">
-                <ul className="sidebar-menu">
-                    <MenuList
-                        menuList={menuListState}
-                        onClick={onClickMenu}
-                        selectedMenu={selectedMenu}
-                    />
-                </ul>
-            </nav>
-        </div>
+        </>
     );
 };
 
@@ -99,7 +106,7 @@ const menuList: () => Promise<MenuType[]> = () =>
             {
                 menuId: 'AS10101',
                 pMenuId: 'AS10100',
-                menuName: 'AS 항공 통계 포털0',
+                menuName: '정기/부정기 운항 현황',
                 isLeaf: true,
                 depth: 2,
                 moveUri: 'screen0',

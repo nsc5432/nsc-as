@@ -1141,12 +1141,12 @@ hr {
     font-size: 11px;
     font-weight: 500;
 }
-.content-breadcrumbs a {
+.content-breadcrumbs span {
     position: relative;
     padding-right: 17px;
     color: #666;
 }
-.content-breadcrumbs a::after {
+.content-breadcrumbs span:not(:last-child)::after {
     content: '';
     position: absolute;
     right: 0;
