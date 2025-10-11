@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { eq, updateInList } from '../../common/fp-utils';
@@ -13,6 +13,10 @@ const Sidebar = () => {
     const [menuListState, setMenuListState] = useState<MenuType[]>([]);
     const [selectedTab, setSelectedTab] = useState<SelectedTab>('CATEGORY');
     const [selectedMenu, setSelectedMenu] = useState<SelectedMenu>();
+
+    const [sidebarWidth, setSidebarWidth] = useState(250);
+    const [isResizing, setIsResizing] = useState(false);
+    const sidebarRef = useRef<HTMLDivElement>(null);
 
     const onClickTabBtn = setSelectedTab;
     const onClickMenu = (menu: MenuType) => {
@@ -47,9 +51,34 @@ const Sidebar = () => {
         navigate(selectedMenu.moveUri as string);
     }, [selectedMenu]);
 
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!isResizing || !sidebarRef.current) return;
+            const newWidth = Math.max(180, e.clientX); // 최소 180px 보장
+            setSidebarWidth(newWidth);
+        };
+
+        const handleMouseUp = () => {
+            setIsResizing(false);
+        };
+
+        if (isResizing) {
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+        } else {
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        }
+
+        return () => {
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, [isResizing]);
+
     return (
-        <>
-            <div className="portal-sidebar">
+        <div className="portal-layout">
+            <div ref={sidebarRef} className="portal-sidebar" style={{ width: `${sidebarWidth}px` }}>
                 <div className="sidebar-tab">
                     <button
                         className={`sidebar-tab-btn ${isActiveTab('CATEGORY')}`}
@@ -74,12 +103,12 @@ const Sidebar = () => {
                     </ul>
                 </nav>
             </div>
-            <div className="portal-dragable">
+            <div className="portal-dragable" onMouseDown={() => setIsResizing(true)}>
                 <button type="button" className="dragable-btn">
                     <span className="blind">Fold</span>
                 </button>
             </div>
-        </>
+        </div>
     );
 };
 

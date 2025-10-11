@@ -16,20 +16,7 @@
     display: flex;
     background-color: #f7f7f7;
 }
-.portal-dragable {
-    position: relative;
-    flex-shrink: 0;
-    width: 10px;
-}
-.portal-dragable .dragable-btn {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: url(../../assets/icon/icon_fold.svg) no-repeat center center;
-    cursor: w-resize;
-}
+
 .portal-content {
     flex-grow: 1;
     display: flex;
