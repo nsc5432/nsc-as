@@ -80,3 +80,21 @@ export const take = curry(<T>(n: number, arr: T[]): T[] => arr.slice(0, n));
  * drop :: Number -> [a] -> [a]
  */
 export const drop = curry(<T>(n: number, arr: T[]): T[] => arr.slice(n));
+
+/**
+ * copy :: [a] -> [a]
+ */
+export const copy = <T>(arr: T[]): T[] => [...arr];
+
+/** 커링 기반 범용 배열 내부 업데이트 유틸 */
+export const updateInList =
+    <T>(list: T[]) =>
+    (key: keyof T, value: T[keyof T]) =>
+    (updater: (target: T) => Partial<T>): T[] => {
+        const index = list.findIndex((item) => item[key] === value);
+        if (index === -1) return list;
+
+        const target = list[index];
+        const updated = { ...target, ...updater(target) };
+        return list.map((item, i) => (i === index ? updated : item));
+    };

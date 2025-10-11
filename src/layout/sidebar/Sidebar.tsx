@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { eq } from '../../common/fp-utils';
+import { eq, updateInList } from '../../common/fp-utils';
 import type { MenuType } from './MenuList';
 import MenuList from './MenuList';
 
@@ -20,15 +20,11 @@ const Sidebar = () => {
             setSelectedMenu(menu);
         }
 
-        // TODO: Refactoring
-        const cp = [...menuListState];
-        const findIndex = menuListState.findIndex((m) => m.menuId === menu.menuId);
-        if (findIndex === -1) {
-            return;
-        }
-        const find = cp[findIndex];
-        find.isSpread = !find.isSpread;
-        setMenuListState(cp);
+        const spreadToggled = updateInList(menuListState)('menuId', menu.menuId)((target) => ({
+            isSpread: !target.isSpread,
+        }));
+
+        setMenuListState(spreadToggled);
     };
 
     const isActive = (a: string | undefined) => (b: string) => (eq(a)(b) ? 'active' : '');
