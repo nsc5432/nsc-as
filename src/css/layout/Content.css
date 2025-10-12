@@ -1,3 +1,11 @@
+/* main cont */
+.content-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0 30px;
+}
+
 .content-header {
     display: flex;
     align-items: center;
@@ -58,7 +66,7 @@
 .content-filter {
     display: flex;
     justify-content: space-between;
-    padding: 20px 18px;
+    padding: 12px 18px;
     border: 1px solid rgba(181, 165, 255, 0.3019607843);
     border-radius: 4px;
     background: rgba(236, 232, 255, 0.2);

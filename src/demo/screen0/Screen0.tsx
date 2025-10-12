@@ -1,4 +1,6 @@
 import { BarChart, TableGrid, type BarChartDataset, type GridColumn } from 'nsc-practice';
+import { Tabs, Tab } from '@mui/material';
+import { useState, type SyntheticEvent } from 'react';
 
 import ContentLayout from '../../layout/content/ContentLayout';
 import ContentHeader from '../../layout/content/ContentHeader';
@@ -7,6 +9,12 @@ import ContentFilter from '../../layout/content/ContentFilter';
 import ContentMain from '../../layout/content/ContentMain';
 
 const Screen0 = () => {
+    const [tabIdx, setTabIdx] = useState<number>(0);
+
+    const handleTabChange = (_: SyntheticEvent, newValue: number) => {
+        setTabIdx(newValue);
+    };
+
     const onSearch = () => {
         alert('SEARCH');
     };
@@ -28,27 +36,23 @@ const Screen0 = () => {
             </ContentFilter>
 
             <ContentMain>
-                <div className="tabs">
-                    <button className="tab-button active" onClick={() => {}}>
-                        유임승객 수
-                    </button>
-                    <button className="tab-button" onClick={() => {}}>
-                        화물 및 기타
-                    </button>
-                    <button className="tab-button" onClick={() => {}}>
-                        환승 및 무임승객
-                    </button>
-                </div>
-                <div className="tab-content flex justify-between">
-                    <TableGrid wrapperClass="w-45p" data={data} columns={gridColumns} />
-                    <BarChart
-                        wrapperClass="w-50p"
-                        data={data}
-                        labels={(s) => s.alnNm}
-                        datasets={barChartDatasets}
-                        title="항공사별 유임승객 수 (Top 10)"
-                    />
-                </div>
+                <Tabs value={tabIdx} onChange={handleTabChange}>
+                    <Tab label="유임승객 수" />
+                    <Tab label="화물 및 기타" />
+                    <Tab label="환승 및 무임승객" />
+                </Tabs>
+                {tabIdx === 0 && (
+                    <div className="tab-content flex justify-between">
+                        <TableGrid wrapperClass="w-45p" data={data} columns={gridColumns} />
+                        <BarChart
+                            wrapperClass="w-50p"
+                            data={data}
+                            labels={(s) => s.alnNm}
+                            datasets={barChartDatasets}
+                            title="항공사별 유임승객 수 (Top 10)"
+                        />
+                    </div>
+                )}
             </ContentMain>
             <ContentReaction />
         </ContentLayout>
