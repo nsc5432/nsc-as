@@ -84,7 +84,7 @@
     display: inline-block;
     width: 12px;
     height: 6px;
-    background: url(../assets/icon/icon_arr_down.svg) no-repeat center center;
+    background: url(../../assets/icon/icon_arr_down.svg) no-repeat center center;
 }
 .sidebar-menu > .sidebar-item.active > .btn::after {
     scale: -1;
@@ -111,11 +111,11 @@
     border: 1px solid currentColor;
     border-radius: 3px;
     margin-right: 12px;
-    background: #eee url(../assets/icon/icon_plus.svg) no-repeat center center;
+    background: #eee url(../../assets/icon/icon_plus.svg) no-repeat center center;
 }
 .sidebar-submenu > .sidebar-item.active > .btn::before {
     border-color: #000;
-    background-image: url(../assets/icon/icon_minus.svg);
+    background-image: url(../../assets/icon/icon_minus.svg);
 }
 .sidebar-submenu > .sidebar-item:not(.active) .sidebar-smmenu {
     height: 0;

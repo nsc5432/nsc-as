@@ -24,4 +24,6 @@
     padding: 0 var(--pd-side) var(--pd-side);
     background-color: #fff;
     box-shadow: -1px 0px 0px 0px #ddd;
+    overflow-y: auto;
+    height: 95vh;
 }

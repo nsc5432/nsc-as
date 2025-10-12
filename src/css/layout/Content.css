@@ -9,7 +9,7 @@
 .content-title {
     padding-left: 22px;
     padding-top: 2px;
-    background: url(../assets/icon/icon_airport.svg) no-repeat left center;
+    background: url(../../assets/icon/icon_airport.svg) no-repeat left center;
     font-family: 'GmarketSans';
     font-weight: 700;
     font-size: 16px;
@@ -44,7 +44,7 @@
     margin-top: -2px;
     width: 8px;
     height: 4px;
-    background: url(../assets/icon/icon_arr_down.svg) no-repeat left center/100%;
+    background: url(../../assets/icon/icon_arr_down.svg) no-repeat left center/100%;
     rotate: -90deg;
 }
 
@@ -82,7 +82,7 @@
     width: 10px;
     height: 10px;
     margin-top: 1px;
-    background: url(../assets/icon/bullet_arr.svg) no-repeat center center;
+    background: url(../../assets/icon/bullet_arr.svg) no-repeat center center;
 }
 
 .filter-btns {
@@ -94,6 +94,7 @@
 .content-reaction {
     font-size: 14px;
     white-space: nowrap;
+    margin-bottom: 5px;
 }
 
 /* reaction area */
