@@ -1,4 +1,4 @@
-import { TableGrid, type GridColumn } from 'nsc-practice';
+import { BarChart, TableGrid, type BarChartDataset, type GridColumn } from 'nsc-practice';
 
 import ContentLayout from '../../layout/content/ContentLayout';
 import ContentHeader from '../../layout/content/ContentHeader';
@@ -39,8 +39,15 @@ const Screen0 = () => {
                         환승 및 무임승객
                     </button>
                 </div>
-                <div id="tab1" className="tab-content active">
-                    <TableGrid data={gridData} columns={gridColumns} />
+                <div className="tab-content flex justify-between">
+                    <TableGrid wrapperClass="w-45p" data={data} columns={gridColumns} />
+                    <BarChart
+                        wrapperClass="w-50p"
+                        data={data}
+                        labels={(s) => s.alnNm}
+                        datasets={barChartDatasets}
+                        title="항공사별 유임승객 수 (Top 10)"
+                    />
                 </div>
             </ContentMain>
             <ContentReaction />
@@ -50,7 +57,12 @@ const Screen0 = () => {
 
 export default Screen0;
 
-const gridData = [
+type AlnBdpsgType = {
+    alnNm: string;
+    bdpsgCnt: string;
+};
+
+const data = [
     { alnNm: '대한항공', bdpsgCnt: '12,681,221' },
     { alnNm: '아시아나항공', bdpsgCnt: '8,848,748' },
     { alnNm: '제주항공', bdpsgCnt: '6,227,704' },
@@ -68,7 +80,10 @@ const gridColumns: GridColumn<AlnBdpsgType>[] = [
     { key: 'bdpsgCnt', header: '유임승객 수' },
 ];
 
-type AlnBdpsgType = {
-    alnNm: string;
-    bdpsgCnt: string;
-};
+const barChartDatasets: BarChartDataset<AlnBdpsgType>[] = [
+    {
+        label: '유임승객 수',
+        data: (s) => Number(s.bdpsgCnt.replaceAll(',', '')),
+        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+    },
+];

@@ -102,14 +102,8 @@ h1 {
     background: #2c3e50;
 }
 .tab-content {
-    display: none;
-    width: 100%;
-    max-width: 1000px;
-}
-.tab-content.active {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
 }
 table {
     width: 100%;
@@ -132,16 +126,4 @@ td {
 th {
     background-color: #3498db;
     color: white;
-}
-.chart-box {
-    width: 100%;
-    max-width: 900px;
-    background: white;
-    padding: 10px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-}
-canvas {
-    max-height: 240px;
 }

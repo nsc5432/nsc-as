@@ -984,244 +984,349 @@ hr {
     padding: 35px 0 34px;
 }
 
-.datagrid-top {
-    flex-shrink: 0;
-    display: flex;
-    gap: var(--gap-tree);
-    margin-bottom: 6px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.datagrid-top-contarea {
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-between;
-}
-
-.datagrid-top-chart {
-    display: flex;
-    gap: 6px;
-}
-.datagrid-top-chart .btn-outlined {
-    width: 46px;
-    height: 42px;
-    padding: 0;
-}
-
-.datagrid-top-chks {
-    display: flex;
-    align-items: center;
-    margin-top: auto;
-    padding-bottom: 6px;
-    padding-right: 10px;
-    gap: 20px;
-    font-weight: 700;
-    color: #000;
-}
-
-.datagrid-top-utils {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 4px;
-    width: var(--tree-width);
-    color: #000;
-    font-weight: 700;
-}
-.datagrid-top-utils .btn-outlined {
-    flex-grow: 1;
-}
-
-.content-datagrid {
-    flex: 1;
-    display: flex;
-    align-items: stretch;
-    gap: var(--gap-tree);
-}
-.content-datagrid.fold {
-    gap: 0;
-}
-.content-datagrid.fold .btn-fold {
-    background-color: #7b81bf;
-    left: var(--pd-side);
-}
-.content-datagrid.fold .datagrid-tree {
-    width: 0;
-}
-.content-datagrid.fold .tree-wrap {
-    translate: var(--pd-side);
-}
-
-.datagrid-table {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.datagrid-tree {
-    position: relative;
-    flex-shrink: 0;
-    width: var(--tree-width);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    transition: width 0.2s ease-out;
-}
-
-.datagrid-cont {
-    position: relative;
-    flex-grow: 1;
-}
-
-.table-wrap {
-    position: absolute;
-    inset: 0;
-    overflow-y: auto;
-    border-top: 2px solid #000;
-}
-.table-wrap table {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: separate;
-    border-spacing: 0;
-}
-.table-wrap table th,
-.table-wrap table td {
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border-bottom: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    text-align: center;
-    line-height: 1.2;
-    font-size: 13px;
-    font-weight: 500;
-}
-.table-wrap table thead {
-    z-index: 1;
-    position: sticky;
-    top: 0;
-}
-.table-wrap table tfoot {
-    z-index: 1;
-    position: sticky;
-    bottom: 0;
-}
-.table-wrap table thead th {
-    height: 36px;
-    background-color: #f0f2f8;
-}
-.table-wrap table tfoot td {
-    border-top: 1px solid #ddd;
-    background-color: #f7f7f7;
-    color: #ff0000;
-}
-.table-wrap table tbody:last-of-type tr:last-of-type td {
-    border-bottom: 0;
-}
-.table-wrap table .tbody-odd tr:nth-child(odd) {
-    background-color: #f7f7f7;
-}
-.table-wrap table .tr-em td {
-    color: #238cff;
-}
-
-.th-wrap {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    margin-left: 6px;
-    margin-right: -6px;
-}
-
-/* tree */
-.tree-wrap {
-    flex-grow: 1;
-    width: var(--tree-width);
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ddd;
-}
-
-.tree-head {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 55px;
-    margin: -1px -1px 0 -1px;
-    background-color: #7b81bf;
-    color: #fff;
-    font-weight: 500;
-    font-size: 15px;
-}
-
-.tree-foot {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    height: 50px;
-    background-color: #ebedff;
-}
-.tree-foot .btn-outlined {
-    min-width: 77px;
-    height: 34px;
-    font-size: 14px;
-}
-
-.tree-cont {
-    position: relative;
-    flex-grow: 1;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.tree-list {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    gap: 16px;
-    padding: 20px;
-}
-.tree-list .tree-fn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.tree-list .tree-item:not(.active) ul {
-    visibility: hidden;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-}
-.tree-list ul {
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
-    padding: 12px 0 12px 25px;
-}
-.tree-list ul li {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.tree-list ul li::before {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: #7cb329;
-}
-
 /* chart */
 .content-chart {
     flex: 1;
     display: flex;
+}
+
+.chart-box {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+/* === Width (px) === */
+.w-10 {
+    width: 10px !important;
+}
+.w-20 {
+    width: 20px !important;
+}
+.w-50 {
+    width: 50px !important;
+}
+.w-100 {
+    width: 100px !important;
+}
+.w-200 {
+    width: 200px !important;
+}
+.w-300 {
+    width: 300px !important;
+}
+
+/* === Width (%) === */
+.w-10p {
+    width: 10% !important;
+}
+.w-20p {
+    width: 20% !important;
+}
+.w-25p {
+    width: 25% !important;
+}
+.w-33p {
+    width: 33.3333% !important;
+} /* 1/3 */
+.w-40p {
+    width: 40% !important;
+}
+.w-45p {
+    width: 45% !important;
+}
+.w-50p {
+    width: 50% !important;
+}
+.w-66p {
+    width: 66.6667% !important;
+} /* 2/3 */
+.w-75p {
+    width: 75% !important;
+}
+.w-80p {
+    width: 80% !important;
+}
+.w-90p {
+    width: 90% !important;
+}
+.w-full {
+    width: 100% !important;
+}
+
+/* === Width (vh 단위) === */
+.w-10vh {
+    width: 10vh !important;
+}
+.w-20vh {
+    width: 20vh !important;
+}
+.w-25vh {
+    width: 25vh !important;
+}
+.w-50vh {
+    width: 50vh !important;
+}
+.w-75vh {
+    width: 75vh !important;
+}
+.w-100vh {
+    width: 100vh !important;
+}
+
+/* === Height (px) === */
+.h-10 {
+    height: 10px !important;
+}
+.h-20 {
+    height: 20px !important;
+}
+.h-50 {
+    height: 50px !important;
+}
+.h-100 {
+    height: 100px !important;
+}
+.h-200 {
+    height: 200px !important;
+}
+.h-300 {
+    height: 300px !important;
+}
+
+/* === Height (%) === */
+.h-10p {
+    height: 10% !important;
+}
+.h-20p {
+    height: 20% !important;
+}
+.h-25p {
+    height: 25% !important;
+}
+.h-33p {
+    height: 33.3333% !important;
+}
+.h-50p {
+    height: 50% !important;
+}
+.h-66p {
+    height: 66.6667% !important;
+}
+.h-75p {
+    height: 75% !important;
+}
+.h-80p {
+    height: 80% !important;
+}
+.h-90p {
+    height: 90% !important;
+}
+.h-full {
+    height: 100% !important;
+}
+
+/* === Height (vh 단위) === */
+.h-10vh {
+    height: 10vh !important;
+}
+.h-20vh {
+    height: 20vh !important;
+}
+.h-25vh {
+    height: 25vh !important;
+}
+.h-50vh {
+    height: 50vh !important;
+}
+.h-75vh {
+    height: 75vh !important;
+}
+.h-100vh {
+    height: 100vh !important;
+}
+
+/* === Margin === */
+.m-0 {
+    margin: 0 !important;
+}
+.m-5 {
+    margin: 5px !important;
+}
+.m-10 {
+    margin: 10px !important;
+}
+.mt-10 {
+    margin-top: 10px !important;
+}
+.mb-10 {
+    margin-bottom: 10px !important;
+}
+.ml-10 {
+    margin-left: 10px !important;
+}
+.mr-10 {
+    margin-right: 10px !important;
+}
+
+/* === Padding === */
+.p-5 {
+    padding: 5px !important;
+}
+.p-10 {
+    padding: 10px !important;
+}
+.pt-10 {
+    padding-top: 10px !important;
+}
+.pb-10 {
+    padding-bottom: 10px !important;
+}
+.pl-10 {
+    padding-left: 10px !important;
+}
+.pr-10 {
+    padding-right: 10px !important;
+}
+
+/* === Flex === */
+.flex {
+    display: flex !important;
+}
+.flex-row {
+    flex-direction: row !important;
+}
+.flex-col {
+    flex-direction: column !important;
+}
+.items-center {
+    align-items: center !important;
+}
+.justify-center {
+    justify-content: center !important;
+}
+.justify-between {
+    justify-content: space-between !important;
+}
+
+/* === Text === */
+.text-center {
+    text-align: center !important;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-right {
+    text-align: right !important;
+}
+
+.fw-bold {
+    font-weight: bold !important;
+}
+.fw-normal {
+    font-weight: normal !important;
+}
+
+.fs-12 {
+    font-size: 12px !important;
+}
+.fs-14 {
+    font-size: 14px !important;
+}
+.fs-16 {
+    font-size: 16px !important;
+}
+.fs-20 {
+    font-size: 20px !important;
+}
+
+/* === Colors === */
+.bg-red {
+    background-color: red !important;
+}
+.bg-blue {
+    background-color: blue !important;
+}
+.bg-gray {
+    background-color: #eee !important;
+}
+
+.text-red {
+    color: red !important;
+}
+.text-blue {
+    color: blue !important;
+}
+.text-gray {
+    color: #666 !important;
+}
+
+/* === Border === */
+.border {
+    border: 1px solid #ccc !important;
+}
+.border-none {
+    border: none !important;
+}
+.rounded {
+    border-radius: 4px !important;
+}
+.rounded-full {
+    border-radius: 9999px !important;
+}
+
+/* === Display / Position === */
+.block {
+    display: block !important;
+}
+.inline-block {
+    display: inline-block !important;
+}
+.absolute {
+    position: absolute !important;
+}
+.relative {
+    position: relative !important;
+}
+.fixed {
+    position: fixed !important;
+}
+
+/* === Overflow === */
+.overflow-auto {
+    overflow: auto !important;
+}
+.overflow-hidden {
+    overflow: hidden !important;
+}
+.overflow-scroll {
+    overflow: scroll !important;
+}
+.overflow-y-auto {
+    overflow-y: auto !important;
+}
+.overflow-x-auto {
+    overflow-x: auto !important;
+}
+
+/* === Scroll / Interaction === */
+.scroll-smooth {
+    scroll-behavior: smooth !important;
+}
+.pointer {
+    cursor: pointer !important;
+}
+.select-none {
+    user-select: none !important;
+}
+
+/* === Centering helper === */
+.center {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
